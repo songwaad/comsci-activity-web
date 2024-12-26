@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+body {
+  background-color: white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--navy-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--navy);
+}
+
+/* Custom Classes */
+.instagram-card {
+  @apply bg-white rounded-lg shadow-sm border border-[#e9ecef] overflow-hidden transition-all hover:shadow-md;
+}
+
+.primary-button {
+  @apply bg-[#030041] text-white hover:bg-[#040158] transition-colors;
+}
+
+.secondary-button {
+  @apply border border-[#e9ecef] text-[#030041] hover:bg-gray-50 transition-colors;
+}
+
+.nav-link {
+  @apply text-gray-100 hover:text-white hover:bg-[#040158] px-3 py-2 rounded-md transition-colors;
+}
+
+/* Print styles */
+@media print {
+  .a4 {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 0;
+    background: white;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Calendar customization */
+.calendar-custom {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  padding: 1rem;
+}
+
+.react-calendar {
+  border: none;
+  background: white;
+}
+
+/* Navigation (Month/Year selector) */
+.react-calendar__navigation {
+  margin-bottom: 1rem;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  font-size: 1.1rem;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f3f4f6;
+}
+
+/* Month view */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #6b7280;
+  padding-bottom: 0.5rem;
+}
+
+.react-calendar__month-view__days {
+  gap: 4px;
+}
+
+/* Calendar tiles */
+.react-calendar__tile {
+  padding: 2em 0.5em;
+  height: 100px;
+  background: none;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f3f4f6;
+}
+
+.react-calendar__tile--now {
+  background: #e6f3ff;
+  font-weight: bold;
+}
+
+.react-calendar__tile--active {
+  background: #030041 !important;
+  color: white;
+  font-weight: bold;
+}
+
+/* Event dots */
+.event-dots {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding-top: 2px;
+}
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.event-dot.workshop {
+  background-color: #3b82f6;
+}
+
+.event-dot.seminar {
+  background-color: #10b981;
+}
+
+.event-dot.conference {
+  background-color: #8b5cf6;
+}
+
+/* Weekend days */
+.react-calendar__month-view__days__day--weekend {
+  color: #ef4444;
+}
+
+/* Hover tooltip */
+.event-dot:hover::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.event-container {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.7rem;
+  overflow: hidden;
+}
+
+.calendar-event {
+  padding: 1px 4px;
+  border-radius: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  font-size: 0.65rem;
+}
+
+.calendar-event.workshop {
+  background-color: #3b82f6;
+}
+
+.calendar-event.seminar {
+  background-color: #10b981;
+}
+
+.calendar-event.conference {
+  background-color: #8b5cf6;
+}
+
+/* ปรับ hover effect ให้แสดง tooltip */
+.calendar-event:hover::before {
+  content: attr(title);
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
